@@ -1,10 +1,11 @@
-const inquirer = require('inquirer');
+// Html page 
 const pageTemplate = require('./src/page-template');
-const writeFile = require('./utils/generate-site.js');
-const Employee = require('./lib/Employee');
 
-// Call Employee class to run 
-// From there, use the getRole() method to ask what role this is
-// Whatever role is input, then call that class 
+// node modules
+const fs = require('fs');
+const inquirer = require('inquirer');
 
-new Employee().initializeApp();
+// Team members
+const Manager = require('./lib/Manager');
+const Intern = require('./lib/Intern');
+const Engineer = require('./lib/Engineer');
