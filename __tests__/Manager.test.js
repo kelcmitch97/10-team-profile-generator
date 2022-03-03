@@ -6,7 +6,7 @@ test('creates managers office number', () => {
     expect(manager.officeNumber).toEqual(expect.any(Number));
 });
 
-test('gets employees role', () => {
+test('overrides employees role to be manager ', () => {
     const manager = new Manager('Sally', 10, 'sally@gmail.com');
 
     expect(manager.getRole()).toEqual('Manager')
