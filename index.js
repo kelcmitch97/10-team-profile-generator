@@ -22,74 +22,177 @@ const addManager = () => {
     ================= 
     `);
 
-    if (!teamArray.manager) {
-        teamArray.manager = [];
-    }
     return inquirer
-    .prompt([
-        {
-            type: 'text',
-            name: 'name',
-            message: 'What is your Team Managers name?',
-            validate: managerNameInput => {
-                if (managerNameInput) {
-                    return true;
-                } else {
-                    console.log('Please enter your managers name!');
-                    return false;
+        .prompt([
+            {
+                type: 'input',
+                name: 'name',
+                message: 'What is your Team Managers name?',
+            },
+            {
+                type: 'input',
+                name: 'id',
+                message: 'Please enter the managers employee ID?',
+                validate: employeeIdInput => {
+                    if (employeeIdInput) {
+                        return true;
+                    } else {
+                        console.log('Please enter managers employee ID!');
+                        return false;
+                    }
                 }
-            }
-        },
-        {
-            type: 'input',
-            name: 'id',
-            message: 'Please enter the managers employee ID?',
-            validate: employeeIdInput => {
-                if (employeeIdInput) {
-                    return true;
-                } else {
-                    console.log('Please enter managers employee ID!');
-                    return false;
-                }
-            }
-        },
-        {
-            type: 'input',
-            name: 'email',
-            message: 'Please enter the managers email address?',
-            validate: email => {
-                const validEmail = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()\.,;\s@\"]+\.{0,1})+([^<>()\.,;:\s@\"]{2,}|[\d\.]+))$/.test(email);
+            },
+            {
+                type: 'input',
+                name: 'email',
+                message: 'Please enter the managers email address?',
+                validate: email => {
+                    const validEmail = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()\.,;\s@\"]+\.{0,1})+([^<>()\.,;:\s@\"]{2,}|[\d\.]+))$/.test(email);
 
-                if (validEmail) {
-                    return true;
-                } else {
-                    console.log('Please enter managers email address!');
-                    return false;
+                    if (validEmail) {
+                        return true;
+                    } else {
+                        console.log('Please enter managers email address!');
+                        return false;
+                    }
                 }
+            },
+            {
+                type: 'input',
+                name: 'officenumber',
+                message: 'Please enter the managers office number?',
             }
-        },
-        {
-            type: 'input',
-            name: 'officenumber',
-            message: 'Please enter the managers office number?',
-            validate: officenumberInput => {
-                if (officenumberInput) {
-                    return true;
-                } else {
-                    console.log('Please enter managers office number!');
-                    return false;
-                }
-            }
-        }
-    ])
-    .then(managerInput => {
-        const { name, id, email, officeNumber } = managerInput;
-        const manager = new Manager (name, id, email, officeNumber);
+        ])
+        .then(managerInput => {
+            const { name, id, email, officenumber} = managerInput;
+            const manager = new Manager(name, id, email, officenumber);
 
-        teamArray.manager.push(managerInput);
-        console.log(teamArray);
-    });
+            teamArray.push(manager);
+            console.log(manager);
+        });
 };
-        
+
+const addEmployee = () => {
+
+    console.log(`
+    =================
+    Add a New Team Member
+    ================= 
+    `);
+
+    return inquirer
+        .prompt([
+            {
+                type: 'list',
+                name: 'role',
+                message: 'Please choose your employers role',
+                choices: ['Engineer', 'Intern']
+            },
+            {
+                type: 'text',
+                name: 'name',
+                message: 'What is your Employers name?',
+                validate: employeeInput => {
+                    if (employeeInput) {
+                        return true;
+                    } else {
+                        console.log('Please enter your employers name!');
+                        return false;
+                    }
+                }
+            },
+            {
+                type: 'input',
+                name: 'id',
+                message: 'Please enter the employees employee ID?',
+                validate: employeeIdInput => {
+                    if (employeeIdInput) {
+                        return true;
+                    } else {
+                        console.log('Please enter employees employee ID!');
+                        return false;
+                    }
+                }
+            },
+            {
+                type: 'input',
+                name: 'email',
+                message: 'Please enter the employee email address?',
+                validate: email => {
+                    const validEmail = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()\.,;\s@\"]+\.{0,1})+([^<>()\.,;:\s@\"]{2,}|[\d\.]+))$/.test(email);
+
+                    if (validEmail) {
+                        return true;
+                    } else {
+                        console.log('Please enter employees email address!');
+                        return false;
+                    }
+                }
+            },
+            {
+                type: 'input',
+                name: 'github',
+                message: 'Please enter the Egnineers github username?',
+                when: (input) => input.role === "Engineer",
+                validate: githubInput => {
+
+                    if (githubInput) {
+                        return true;
+                    } else {
+                        console.log('Please enter the engineers github username!');
+                        return false;
+                    }
+                }
+            },
+            {
+                type: 'input',
+                name: 'school',
+                message: 'Please enter the Interns school?',
+                when: (input) => input.role === "Intern",
+                validate: schoolInput => {
+
+                    if (schoolInput) {
+                        return true;
+                    } else {
+                        console.log('Please enter the interns school!');
+                        return false;
+                    }
+                }
+            },
+            {
+                type: 'confirm',
+                name: 'confirmAddEmployee',
+                message: 'Would you like to add another employee?',
+                default: false
+            }
+        ])
+        .then(employeeInput => {
+
+            let { name, id, email, role, github, school, confirmAddEmployee } = employeeInput;
+            let employee;
+
+            if (role === 'Engineer') {
+
+                employee = new Engineer(name, id, email, github);
+
+                console.log(employee);
+
+            } else if (role === 'Intern') {
+
+                employee = new Intern(name, id, email, school);
+
+                console.log(employee);
+            }
+
+            teamArray.push(employee);
+
+            if (confirmAddEmployee) {
+                return addEmployee(teamArray);
+            } else {
+                return teamArray;
+            }
+        });
+}
 
 addManager();
+// .then(addEmployee);
