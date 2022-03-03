@@ -1,6 +1,7 @@
 {
   "dependencies": {
-    "inquirer": "^8.2.0"
+    "inquirer": "^8.2.0",
+    "nodemon": "^2.0.15"
   },
   "name": "10-team-profile-generator",
   "version": "1.0.0",
@@ -13,7 +14,8 @@
     "jest": "^27.5.1"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "devStart": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -25,5 +27,4 @@
     "url": "https://github.com/kelcmitch97/10-team-profile-generator/issues"
   },
   "homepage": "https://github.com/kelcmitch97/10-team-profile-generator#readme"
-  
 }
