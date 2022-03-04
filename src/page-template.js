@@ -80,7 +80,7 @@ const generateTeamProfile = function(employeeCards) {
         <header class="hero min-100-vh" id="team-header">
             <h1>My Team</h1>
         <header>
-
+    
 
     </body>
     
