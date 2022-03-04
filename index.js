@@ -194,5 +194,5 @@ const addEmployee = () => {
         });
 }
 
-addManager();
-// .then(addEmployee);
+addManager()
+.then(addEmployee);
