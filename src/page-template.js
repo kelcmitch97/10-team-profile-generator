@@ -40,6 +40,28 @@ const engineerCard = function(engineer) {
     `
 };
 
+// Generate Intern
+const internCard = function(intern) {
+    return `
+    <div class="col-4 mt-4">
+        <div class="card">
+            <div class="card-header">
+                ${intern.name}
+                <i class="uil uil-graduation-cap">Intern</i>
+            </div>
+            <div class="card-body">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">ID: ${intern.id}</li>
+                    <li class="list-group-item">Email: <a href="mailto:${intern.email}">${intern.email}</a></li>
+                    <li class="list-group-item">School: ${intern.school}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    `
+};
+
+
 const generateTeamProfile = function(employeeCards) {
     return `
     <!DOCTYPE html> 
