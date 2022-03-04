@@ -1,17 +1,40 @@
 // Generate mananger 
 const managerCard = function(manager) {
     return `
-    <div class="card">
-        <div class="card-header">
-            ${manager.name}
-            <i class="uil uil-coffee">Manager</i>
+    <div class="col-4 mt-4">
+        <div class="card">
+            <div class="card-header">
+                ${manager.name}
+                <i class="uil uil-coffee">Manager</i>
+            </div>
+            <div class="card-body">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">ID: ${manager.id}</li>
+                    <li class="list-group-item">Email: <a href="mailto:${manager.email}">${manager.email}</a></li>
+                    <li class="list-group-item">Office Number: ${manager.officenumber}</li>
+                </ul>
+            </div>
         </div>
-        <div class="card-body">
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">ID: ${manager.id}</li>
-                <li class="list-group-item">Email: <a href="mailto:${manager.email}">${manager.email}</a></li>
-                <li class="list-group-item">Office Number: ${manager.officenumber}</li>
-            </ul>
+    </div>
+    `
+};
+
+// Generate engineer
+const engineerCard = function(engineer) {
+    return `
+    <div class="col-4 mt-4">
+        <div class="card">
+            <div class="card-header">
+                ${engineer.name}
+                <i class="uil uil-constructor">Engineer</i>
+            </div>
+            <div class="card-body">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">ID: ${engineer.id}</li>
+                    <li class="list-group-item">Email: <a href="mailto:${engineer.email}">${engineer.email}</a></li>
+                    <li class="list-group-item">GitHub: <a href="https://github.com/${engineer.github}">${engineer.github}</li>
+                </ul>
+            </div>
         </div>
     </div>
     `
