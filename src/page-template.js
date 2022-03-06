@@ -1,10 +1,10 @@
 // Generate mananger 
-const managerCard = function(manager) {
+const managerCard = function (manager) {
     return `
     <div class="col-4 mt-4">
         <div class="card">
-            <div class="card-header">
-                <h2 class="card-title">${manager.name}</h2>
+            <div class="card-header team-manager">
+                <h3 class="card-title">${manager.name}</h3>
                 <i class="uil uil-coffee"></i> Manager
             </div>
             <div class="card-body">
@@ -20,19 +20,19 @@ const managerCard = function(manager) {
 };
 
 // Generate engineer
-const engineerCard = function(engineer) {
+const engineerCard = function (engineer) {
     return `
     <div class="col-4 mt-4">
         <div class="card">
-            <div class="card-header">
-                <h2 class="card-title">${engineer.name}</h2>
+            <div class="card-header team-engineer">
+                <h3 class="card-title">${engineer.name}</h3>
                 <i class="uil uil-constructor"></i> Engineer
             </div>
             <div class="card-body">
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">ID: ${engineer.id}</li>
                     <li class="list-group-item">Email: <a href="mailto:${engineer.email}">${engineer.email}</a></li>
-                    <li class="list-group-item">GitHub: <a href="https://github.com/${engineer.github}">${engineer.github}</li>
+                    <li class="list-group-item">GitHub: <a href="https://github.com/${engineer.github}" target="_blank">${engineer.github}</a></li>
                 </ul>
             </div>
         </div>
@@ -41,12 +41,12 @@ const engineerCard = function(engineer) {
 };
 
 // Generate Intern
-const internCard = function(intern) {
+const internCard = function (intern) {
     return `
     <div class="col-4 mt-4">
         <div class="card">
-            <div class="card-header">
-                <h2 class="card-title">${intern.name}</h2>
+            <div class="card-header team-intern">
+                <h3 class="card-title">${intern.name}</h3>
                 <i class="uil uil-graduation-cap"></i> Intern
             </div>
             <div class="card-body">
@@ -76,31 +76,31 @@ generateTeam = (fileContent) => {
             teamProfileArray.push(generateManager);
         }
 
-         // Engineer
-         if (role === 'Engineer') {
+        // Engineer
+        if (role === 'Engineer') {
             const generateEngineer = engineerCard(employee);
 
             teamProfileArray.push(generateEngineer);
         }
 
-         // Intern
-         if (role === 'Intern') {
+        // Intern
+        if (role === 'Intern') {
             const generateIntern = internCard(employee);
 
             teamProfileArray.push(generateIntern);
         }
     }
 
-        // join team members
-        const employeeCards = teamProfileArray.join('');
+    // join team members
+    const employeeCards = teamProfileArray.join('');
 
-        // return generated team page
-        const generateTeam = generateTeamProfile(employeeCards);
-        return generateTeam;
-   
+    // return generated team page
+    const generateEmployees = generateTeamProfile(employeeCards);
+    return generateEmployees;
+
 };
 
-const generateTeamProfile = function(employeeCards) {
+const generateTeamProfile = function (employeeCards) {
     return `
     <!DOCTYPE html> 
     <html lang="en"> 
@@ -115,11 +115,11 @@ const generateTeamProfile = function(employeeCards) {
     </head>
 
     <body>
-        <header>
-            <nav class="navbar team-header">
-                <span class="navbar-brand mb-0 h1 text-center"><i class="uil uil-users-alt">My Team</i></span>
-            </nav>
-        <header>
+        <header class="team-header text-center m-3 h1">
+           
+                <i class="uil uil-users-alt">My Team</i>
+         
+        </header>
         
         <main>
             <div class="container">
@@ -128,12 +128,10 @@ const generateTeamProfile = function(employeeCards) {
                 </div>
             </div>
         </main>
-
-        
-    </body>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    </body>
     </html>
     `;
 };

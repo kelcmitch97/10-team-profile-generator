@@ -9,7 +9,6 @@ const inquirer = require('inquirer');
 const Manager = require('./lib/Manager');
 const Intern = require('./lib/Intern');
 const Engineer = require('./lib/Engineer');
-const generateTeamProfile = require('./src/page-template');
 
 // Array of Team members
 const teamArray = [];
@@ -90,7 +89,7 @@ const addEmployee = () => {
                 choices: ['Engineer', 'Intern']
             },
             {
-                type: 'text',
+                type: 'input',
                 name: 'name',
                 message: 'What is your Employers name?',
                 validate: employeeInput => {
@@ -133,7 +132,7 @@ const addEmployee = () => {
             {
                 type: 'input',
                 name: 'github',
-                message: 'Please enter the Egnineers github username?',
+                message: 'Please enter the Engineers github username?',
                 when: (input) => input.role === "Engineer",
                 validate: githubInput => {
 
@@ -175,13 +174,11 @@ const addEmployee = () => {
             if (role === 'Engineer') {
 
                 employee = new Engineer(name, id, email, github);
-
                 console.log(employee);
 
             } else if (role === 'Intern') {
 
                 employee = new Intern(name, id, email, school);
-
                 console.log(employee);
             }
 
