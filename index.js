@@ -1,5 +1,5 @@
 // Html page 
-// const pageTemplate = require('./src/page-template');
+const pageTemplate = require('./src/page-template');
 
 // node modules
 const fs = require('fs');
@@ -9,6 +9,7 @@ const inquirer = require('inquirer');
 const Manager = require('./lib/Manager');
 const Intern = require('./lib/Intern');
 const Engineer = require('./lib/Engineer');
+const generateTeamProfile = require('./src/page-template');
 
 // Array of Team members
 const teamArray = [];
@@ -194,5 +195,26 @@ const addEmployee = () => {
         });
 }
 
+// Write file for HTML page 
+const writeFile = fileContent => {
+    fs.writeFile('./dist/index.html', fileContent, err => {
+        if (err) {
+            console.log(err);
+            return;
+        } else {
+            console.log("Your Team Profile has now been created! Open the index.html file to see your team page.")
+        }
+    })
+};
+
 addManager()
-.then(addEmployee);
+.then(addEmployee)
+.then(teamArray => {
+    return pageTemplate(teamArray);
+})
+.then(generateHTML => {
+    return writeFile(generateHTML);
+})
+.catch(err => {
+    console.log(err);
+});

@@ -10,3 +10,10 @@
     --lighter: #ad8173;
     --border-radius: 0.3rem;
 }
+
+/* Header */
+
+.team-header{
+    background-color: var(--secondary);
+    color: white;
+}
