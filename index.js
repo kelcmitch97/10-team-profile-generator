@@ -33,11 +33,14 @@ const addManager = () => {
                 type: 'input',
                 name: 'id',
                 message: 'Please enter the managers employee ID?',
-                validate: employeeIdInput => {
-                    if (employeeIdInput) {
+                validate: id => {
+                    
+                    const validId = /^[0-9.-]*$/.test(id);
+                    
+                    if (validId) {
                         return true;
                     } else {
-                        console.log('Please enter managers employee ID!');
+                        console.log(' Please enter managers employee ID!');
                         return false;
                     }
                 }
@@ -52,7 +55,7 @@ const addManager = () => {
                     if (validEmail) {
                         return true;
                     } else {
-                        console.log('Please enter managers email address!');
+                        console.log(' Please enter managers email address!');
                         return false;
                     }
                 }
@@ -96,7 +99,7 @@ const addEmployee = () => {
                     if (employeeInput) {
                         return true;
                     } else {
-                        console.log('Please enter your employers name!');
+                        console.log(' Please enter your employers name!');
                         return false;
                     }
                 }
@@ -104,12 +107,15 @@ const addEmployee = () => {
             {
                 type: 'input',
                 name: 'id',
-                message: 'Please enter the employees employee ID?',
-                validate: employeeIdInput => {
-                    if (employeeIdInput) {
+                message: 'Please enter the employees ID?',
+                validate: id => {
+                    
+                    const validId = /^[0-9.-]*$/.test(id);
+
+                    if (validId) {
                         return true;
                     } else {
-                        console.log('Please enter employees employee ID!');
+                        console.log(' Please enter employees ID!');
                         return false;
                     }
                 }
@@ -124,7 +130,7 @@ const addEmployee = () => {
                     if (validEmail) {
                         return true;
                     } else {
-                        console.log('Please enter employees email address!');
+                        console.log(' Please enter employees email address!');
                         return false;
                     }
                 }
@@ -139,7 +145,7 @@ const addEmployee = () => {
                     if (githubInput) {
                         return true;
                     } else {
-                        console.log('Please enter the engineers github username!');
+                        console.log(' Please enter the engineers github username!');
                         return false;
                     }
                 }
@@ -154,7 +160,7 @@ const addEmployee = () => {
                     if (schoolInput) {
                         return true;
                     } else {
-                        console.log('Please enter the interns school!');
+                        console.log(' Please enter the interns school!');
                         return false;
                     }
                 }
@@ -187,7 +193,9 @@ const addEmployee = () => {
             if (confirmAddEmployee) {
                 return addEmployee(teamArray);
             } else {
+                console.table(teamArray);
                 return teamArray;
+                
             }
         });
 }
