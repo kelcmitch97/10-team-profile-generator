@@ -31,7 +31,7 @@ node index.js
 
 ## Tutorial
 
-[Walkthrough Tutorial of Professional README Generator App](https://drive.google.com/file/d/1C6cGG7vzRR4zmUCx1O1-YkINQ_8YNOJt/view)
+[Walkthrough Tutorial of Team Profile Generator App](https://drive.google.com/file/d/1C6cGG7vzRR4zmUCx1O1-YkINQ_8YNOJt/view)
 
 Test index.html team profile created from the team profile generator can be seen below:
 
