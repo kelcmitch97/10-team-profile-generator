@@ -145,7 +145,7 @@ const addEmployee = () => {
                     if (githubInput) {
                         return true;
                     } else {
-                        console.log(' Please enter the engineers github username!');
+                        console.log(' Please enter your employees github username!');
                         return false;
                     }
                 }
@@ -160,7 +160,7 @@ const addEmployee = () => {
                     if (schoolInput) {
                         return true;
                     } else {
-                        console.log(' Please enter the interns school!');
+                        console.log(' Please enter your employess school!');
                         return false;
                     }
                 }
