@@ -6,31 +6,32 @@ test('creates an employee object', () => {
     expect(employee.name).toEqual(expect.any(String));
     expect(employee.id).toEqual(expect.any(Number));
     expect(employee.email).toEqual(expect.any(String));
+    console.table(employee);
 });
 
-test('gets employees name', () => {
-    const employee = new Employee('Tim', 9 , 'tim@gmail.com');
+// test('gets employees name', () => {
+//     const employee = new Employee('Tim', 9 , 'tim@gmail.com');
 
-    expect(employee.getName()).toEqual(expect.stringContaining(employee.name.toString()))
-});
+//     expect(employee.getName()).toEqual(expect.stringContaining(employee.name.toString()))
+// });
 
-test('gets employees id', () => {
-    const employee = new Employee('Tim', 9 , 'tim@gmail.com');
+// test('gets employees id', () => {
+//     const employee = new Employee('Tim', 9 , 'tim@gmail.com');
 
-    expect(employee.getId()).toEqual(expect.stringContaining(employee.id.toString()))
-});
+//     expect(employee.getId()).toEqual(expect.stringContaining(employee.id.toString()))
+// });
 
-test('gets employees email', () => {
-    const employee = new Employee('Tim', 9 , 'tim@gmail.com');
+// test('gets employees email', () => {
+//     const employee = new Employee('Tim', 9 , 'tim@gmail.com');
 
-    expect(employee.getEmail()).toEqual(expect.stringContaining(employee.email.toString()))
-});
+//     expect(employee.getEmail()).toEqual(expect.stringContaining(employee.email.toString()))
+// });
 
-test('gets employees role', () => {
-    const employee = new Employee('Tim', 9 , 'tim@gmail.com');
+// test('gets employees role', () => {
+//     const employee = new Employee('Tim', 9 , 'tim@gmail.com');
 
-    expect(employee.getRole()).toEqual('Employee')
-});
+//     expect(employee.getRole()).toEqual('Employee')
+// });
 
 
 
